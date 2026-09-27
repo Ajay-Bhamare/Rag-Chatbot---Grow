@@ -1,0 +1,12 @@
+# Render Blueprint — deploy via "New +" → "Blueprint" → select this repo.
+services:
+  - type: web
+    name: mf-faq-rag
+    runtime: python
+    buildCommand: pip install torch --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt && python build_all.py
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: GROQ_API_KEY
+        sync: false # set in Render dashboard → Environment (never commit keys)
