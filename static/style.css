@@ -1,0 +1,87 @@
+/* Groww-inspired: white cards, hairline borders, one green accent. */
+:root {
+  --green: #00b386;
+  --green-dark: #00916f;
+  --ink: #44475b;
+  --muted: #7c7e8c;
+  --page: #f6f6f7;
+  --card: #ffffff;
+  --line: #e9e9eb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Roboto, -apple-system, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--ink);
+}
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 640px; margin: 0 auto; padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { font-size: 20px; color: var(--ink); display: flex; align-items: center; gap: 6px; }
+.brand-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--green); display: inline-block; }
+.brand b { font-weight: 700; }
+.badge {
+  font-size: 12px; color: var(--green-dark);
+  background: #e6f7f1; border-radius: 20px; padding: 4px 12px; font-weight: 500;
+}
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 40px; }
+.hero { padding: 24px 0 8px; }
+.hero h1 { font-size: 26px; margin: 0 0 6px; color: #2c2e3e; }
+.hero p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pills button {
+  border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  border-radius: 20px; padding: 7px 14px; font-size: 13px; cursor: pointer;
+}
+.pills button:hover { border-color: var(--green); color: var(--green-dark); }
+.chat { display: flex; flex-direction: column; gap: 12px; margin: 18px 0 6px; }
+.msg { display: flex; gap: 10px; align-items: flex-start; }
+.msg.user { justify-content: flex-end; }
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: var(--green); color: #fff; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.bubble {
+  background: var(--card); border: 1px solid var(--line); border-radius: 4px 12px 12px 12px;
+  padding: 12px 14px; font-size: 14px; line-height: 1.55; max-width: 85%;
+}
+.msg.user .bubble {
+  background: var(--green); border-color: var(--green); color: #fff;
+  border-radius: 12px 4px 12px 12px;
+}
+.bubble .src {
+  display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 500;
+  color: var(--green-dark); text-decoration: none;
+  border-top: 1px solid var(--line); padding-top: 8px; width: 100%;
+}
+.bubble .src:hover { text-decoration: underline; }
+.typing span { display: inline-block; width: 7px; height: 7px; margin-right: 4px;
+  background: #c9cad1; border-radius: 50%; animation: blink 1s infinite; }
+.typing span:nth-child(2) { animation-delay: .2s; }
+.typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 50% { opacity: .25; } }
+.examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
+.examples button {
+  border: 1px dashed var(--green); background: #f0faf7; color: var(--green-dark);
+  border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; text-align: left;
+}
+.composer { display: flex; gap: 8px; position: sticky; bottom: 12px; }
+.composer input {
+  flex: 1; padding: 13px 14px; font-size: 14px;
+  border: 1px solid var(--line); border-radius: 8px; outline: none; background: var(--card);
+}
+.composer input:focus { border-color: var(--green); }
+.composer button {
+  background: var(--green); color: #fff; border: none; border-radius: 8px;
+  padding: 0 24px; font-size: 15px; font-weight: 500; cursor: pointer;
+}
+.composer button:hover { background: var(--green-dark); }
+.disclaimer { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 18px; }

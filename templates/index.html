@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MF Assistant — HDFC Scheme FAQs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="brand-dot"></span>mf&nbsp;<b>assistant</b></div>
+    <div class="badge">Facts-only · No advice</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>HDFC Mutual Fund FAQs</h1>
+    <p>Instant facts on 5 HDFC schemes — expense ratio, exit load, SIP minimums, lock-in, riskometer &amp; more. Every answer cites its source.</p>
+    <div class="pills">
+      <button data-q="Large Cap">Large Cap</button>
+      <button data-q="Flexi Cap">Flexi Cap</button>
+      <button data-q="ELSS">ELSS</button>
+      <button data-q="Small Cap">Small Cap</button>
+      <button data-q="Balanced Advantage">Balanced Advantage</button>
+    </div>
+  </section>
+
+  <section id="chat" class="chat">
+    <div class="msg bot">
+      <div class="avatar">MF</div>
+      <div class="bubble">Welcome! Ask a factual question about any of the 5 HDFC schemes above. Try an example below.</div>
+    </div>
+  </section>
+
+  <section class="examples">
+    <button>What is the expense ratio of HDFC ELSS Tax Saver?</button>
+    <button>Does HDFC Small Cap have a lock-in?</button>
+    <button>What is the minimum SIP for HDFC Balanced Advantage?</button>
+  </section>
+
+  <form id="composer" class="composer">
+    <input id="q" placeholder="Ask about expense ratio, exit load, SIP…" autocomplete="off">
+    <button type="submit">Ask</button>
+  </form>
+
+  <p class="disclaimer">Facts-only assistant. No investment advice. Answers come only from the 5 public HDFC scheme pages. Figures are a snapshot of 27 Sep 2026; NAV/AUM change daily. Mutual fund investments are subject to market risks.</p>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
