@@ -27,7 +27,9 @@ next phase until its verify passes. Python binary: `.python/python.exe`
 - **Steps:**
   1. Write `sources.csv` with the 5 Direct–Growth HDFC URLs from PRD §3.
   2. `loader.py`: GET each URL (browser User-Agent, timeout 40s), strip
-     script/style/nav/footer, collapse whitespace, save
+     script/style/nav/footer, trim site-nav header (start at the fund
+     title) and link-farm footer (registrar info sits above the cut),
+     collapse whitespace, save
      `data/raw.json` as `[{scheme, category, url, text, fetched_at}]`.
 - **Verify:** `data/raw.json` exists with 5 docs; each `text` contains its
   scheme name and an `Expense ratio` line.
@@ -72,10 +74,14 @@ next phase until its verify passes. Python binary: `.python/python.exe`
      Keep mapped names byte-identical to `sources.csv` (the Flexi Cap entry
      carries its “(HDFC Equity Fund)” suffix — a mismatch silently returns
      zero hits).
-  3. Vector top-8 → keyword-overlap re-rank → top-4 (pure cosine missed
-     exact fact lines).
+  3. Vector top-30 within the scheme → keyword-overlap re-rank → top-8
+     for extraction (a wide net: boilerplate-heavy header chunks score
+     poorly on vectors, so top-8 alone missed exact fact lines).
   4. `detect_intent()` from query keywords; run ONLY that intent's
      extractor over hits (never loop all intents over pooled text).
+     If regex misses, Groq (`openai/gpt-oss-20b`, key from `.env`) reads
+     the same chunks with a strict context-only prompt; deterministic
+     guards + appended citation keep the guarantees.
      Special cases: `lock` → ELSS 3-year rule vs “no lock-in stated”;
      `statement` → CAMS registrar answer; returns-pattern → factsheet
      redirect with the scheme URL.
