@@ -1,87 +1,107 @@
-/* Groww-inspired: white cards, hairline borders, one green accent. */
+/* Blue + green + white mix: gradient header, colorful accents, white cards. */
 :root {
   --green: #00b386;
   --green-dark: #00916f;
-  --ink: #44475b;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --sky: #e8f2ff;
+  --mint: #e6f7f1;
+  --ink: #2c2e3e;
   --muted: #7c7e8c;
-  --page: #f6f6f7;
+  --page: #eef4ff;
   --card: #ffffff;
-  --line: #e9e9eb;
+  --line: #dbe4f3;
+  --grad: linear-gradient(135deg, #00b386 0%, #2563eb 100%);
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Roboto, -apple-system, "Segoe UI", sans-serif;
-  background: var(--page);
+  background: linear-gradient(180deg, #e8f2ff 0%, #f2fbf7 320px, #eef4ff 100%);
   color: var(--ink);
+  min-height: 100vh;
 }
 .topbar {
   position: sticky; top: 0; z-index: 10;
-  background: var(--card);
-  border-bottom: 1px solid var(--line);
+  background: var(--grad);
+  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.25);
 }
 .topbar-inner {
   max-width: 640px; margin: 0 auto; padding: 12px 16px;
   display: flex; align-items: center; justify-content: space-between;
 }
-.brand { font-size: 20px; color: var(--ink); display: flex; align-items: center; gap: 6px; }
-.brand-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--green); display: inline-block; }
+.brand { font-size: 20px; color: #fff; display: flex; align-items: center; gap: 6px; }
+.brand-dot { width: 12px; height: 12px; border-radius: 50%; background: #fff; display: inline-block; }
 .brand b { font-weight: 700; }
 .badge {
-  font-size: 12px; color: var(--green-dark);
-  background: #e6f7f1; border-radius: 20px; padding: 4px 12px; font-weight: 500;
+  font-size: 12px; color: var(--blue-dark); font-weight: 700;
+  background: #fff; border-radius: 20px; padding: 4px 12px;
 }
 .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 40px; }
 .hero { padding: 24px 0 8px; }
-.hero h1 { font-size: 26px; margin: 0 0 6px; color: #2c2e3e; }
+.hero h1 {
+  font-size: 26px; margin: 0 0 6px;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .hero p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .pills button {
   border: 1px solid var(--line); background: var(--card); color: var(--ink);
-  border-radius: 20px; padding: 7px 14px; font-size: 13px; cursor: pointer;
+  border-radius: 20px; padding: 7px 14px; font-size: 13px; cursor: pointer; font-weight: 500;
 }
-.pills button:hover { border-color: var(--green); color: var(--green-dark); }
+.pills button:nth-child(odd):hover { border-color: var(--green); color: var(--green-dark); background: var(--mint); }
+.pills button:nth-child(even):hover { border-color: var(--blue); color: var(--blue-dark); background: var(--sky); }
 .chat { display: flex; flex-direction: column; gap: 12px; margin: 18px 0 6px; }
 .msg { display: flex; gap: 10px; align-items: flex-start; }
 .msg.user { justify-content: flex-end; }
 .avatar {
   width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
-  background: var(--green); color: #fff; font-size: 12px; font-weight: 700;
+  background: var(--grad); color: #fff; font-size: 12px; font-weight: 700;
   display: flex; align-items: center; justify-content: center;
 }
 .bubble {
-  background: var(--card); border: 1px solid var(--line); border-radius: 4px 12px 12px 12px;
+  background: var(--card); border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: 4px 12px 12px 12px;
   padding: 12px 14px; font-size: 14px; line-height: 1.55; max-width: 85%;
+  box-shadow: 0 1px 4px rgba(37, 99, 235, 0.08);
 }
 .msg.user .bubble {
-  background: var(--green); border-color: var(--green); color: #fff;
+  background: linear-gradient(135deg, #2563eb 0%, #00b386 130%);
+  border: none; color: #fff;
   border-radius: 12px 4px 12px 12px;
 }
 .bubble .src {
-  display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 500;
-  color: var(--green-dark); text-decoration: none;
+  display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 700;
+  color: var(--blue-dark); text-decoration: none;
   border-top: 1px solid var(--line); padding-top: 8px; width: 100%;
 }
 .bubble .src:hover { text-decoration: underline; }
 .typing span { display: inline-block; width: 7px; height: 7px; margin-right: 4px;
-  background: #c9cad1; border-radius: 50%; animation: blink 1s infinite; }
-.typing span:nth-child(2) { animation-delay: .2s; }
+  background: var(--blue); border-radius: 50%; animation: blink 1s infinite; }
+.typing span:nth-child(2) { animation-delay: .2s; background: var(--green); }
 .typing span:nth-child(3) { animation-delay: .4s; }
 @keyframes blink { 50% { opacity: .25; } }
 .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; }
 .examples button {
-  border: 1px dashed var(--green); background: #f0faf7; color: var(--green-dark);
   border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; text-align: left;
+  font-weight: 500;
+}
+.examples button:nth-child(odd) {
+  border: 1px dashed var(--green); background: var(--mint); color: var(--green-dark);
+}
+.examples button:nth-child(even) {
+  border: 1px dashed var(--blue); background: var(--sky); color: var(--blue-dark);
 }
 .composer { display: flex; gap: 8px; position: sticky; bottom: 12px; }
 .composer input {
   flex: 1; padding: 13px 14px; font-size: 14px;
-  border: 1px solid var(--line); border-radius: 8px; outline: none; background: var(--card);
+  border: 2px solid var(--line); border-radius: 12px; outline: none; background: var(--card);
 }
-.composer input:focus { border-color: var(--green); }
+.composer input:focus { border-color: var(--blue); }
 .composer button {
-  background: var(--green); color: #fff; border: none; border-radius: 8px;
-  padding: 0 24px; font-size: 15px; font-weight: 500; cursor: pointer;
+  background: var(--grad); color: #fff; border: none; border-radius: 12px;
+  padding: 0 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
 }
-.composer button:hover { background: var(--green-dark); }
 .disclaimer { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 18px; }
