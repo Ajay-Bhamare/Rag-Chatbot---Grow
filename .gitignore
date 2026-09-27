@@ -1,0 +1,5 @@
+.python/
+.env
+data/chroma/
+__pycache__/
+*.pyc
